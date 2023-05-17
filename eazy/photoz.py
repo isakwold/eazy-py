@@ -2917,7 +2917,7 @@ class PhotoZ(object):
                                  self.OBJID[ix]) #, self.prior_mag_cat[ix])
                                  
                 #ax.text(0.95, 0.95, txt, ha='right', va='top', fontsize=7,
-                #        transform=ax.transAxes, 
+                #        transform=ax.transAxes, does this get updated?
                 #        bbox=dict(facecolor='w', alpha=0.5), zorder=10)
                 
                 ax.legend(fontsize=7, loc='upper left')
