@@ -2691,10 +2691,14 @@ class PhotoZ(object):
                 flux_unit = u.uJy / u.micron
             else:
                 templz_power = 0
-                flam_spec = 1.e29
-                flam_sed = 1.e29/self.ext_corr
-                ylabel = (r'$f_\nu$ [$\mu$Jy]')    
-                flux_unit = u.uJy
+                #flam_spec = 1.e29
+                #flam_sed = 1.e29/self.ext_corr
+                #ylabel = (r'$f_\nu$ [$\mu$Jy]')    
+                #flux_unit = u.uJy
+                flam_spec = 1.e32
+                flam_sed = 1.e32/self.ext_corr
+                ylabel = (r'$f_\nu$ [nJy]')    
+                flux_unit = u.nJy
             
         else:
             templz_power = -2
