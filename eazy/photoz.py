@@ -2434,7 +2434,7 @@ class PhotoZ(object):
         fp.close()
     
     
-    def show_fit(self, id, id_is_idx=False, zshow=None, show_fnu=0, get_spec=False, xlim=[0.3, 9], show_components=False, show_redshift_draws=False, draws_cmap=None, ds9=None, ds9_sky=True, add_grid=False, axis_fontsize=14, legend_fontsize=12, add_label=True, showpz=0.6, logpz=False, zr=None, axes=None, template_color='#1f77b4', figsize=[8,4], ndraws=100, fitter='nnls', show_missing=True, maglim=None, show_prior=False, show_stars=False, delta_chi2_stars=-20, max_stars=3, show_upperlimits=True, snr_thresh=2., with_tef=True, **kwargs):
+    def show_fit(self, id, id_is_idx=False, zshow=None, show_fnu=0, get_spec=False, xlim=[0.3, 9], set_ylim=False, ylim=[0, 20], show_components=False, show_redshift_draws=False, draws_cmap=None, ds9=None, ds9_sky=True, add_grid=False, axis_fontsize=14, legend_fontsize=12, add_label=True, showpz=0.6, logpz=False, zr=None, axes=None, template_color='#1f77b4', figsize=[8,4], ndraws=100, fitter='nnls', show_missing=True, maglim=None, show_prior=False, show_stars=False, delta_chi2_stars=-20, max_stars=3, show_upperlimits=True, snr_thresh=2., with_tef=True, **kwargs):
         """
         Make plot of SED and p(z) of a single object
         
@@ -2733,7 +2733,7 @@ class PhotoZ(object):
             return data
         
         ###### Make the plot
-        
+        plt.rcParams.update({'font.size': axis_fontsize})
         if axes is None:
             fig = plt.figure(figsize=figsize)
             if showpz:
@@ -2901,6 +2901,8 @@ class PhotoZ(object):
             if np.isfinite(ymax):
                 ax.set_ylim(-0.1*ymax, 1.2*ymax)
 
+            if set_ylim:
+                ax.set_ylim(ylim)
             ax.set_xlim(xlim)
             xt = np.array([0.1, 0.5, 1, 2, 4, 8, 24, 160, 500])*1.e4
 
