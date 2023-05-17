@@ -2733,10 +2733,7 @@ class PhotoZ(object):
             return data
         
         ###### Make the plot
-        plt.minorticks_on()
-        plt.tick_params(axis='both', direction='in', which='both', right=True,top=True)
-        plt.rcParams.update({'font.size': axis_fontsize})
-
+        
         if axes is None:
             fig = plt.figure(figsize=figsize)
             if showpz:
@@ -2955,8 +2952,14 @@ class PhotoZ(object):
                        fc='None', ec='0.7',
                        alpha=0.6,
                        zorder=-100)
+
+        ax.minorticks_on()
+        ax.tick_params(axis='both', direction='in', which='both', right=True,top=True)
+        plt.rcParams.update({'font.size': axis_fontsize})
+
         
         ## P(z)
+        
         if not showpz:
             return fig, data
             
@@ -2967,7 +2970,9 @@ class PhotoZ(object):
                 ax = axes[1]
         else:
             ax = fig.add_subplot(fig_axes[1])
-        
+        ax.minorticks_on()
+        ax.tick_params(axis='both', direction='in', which='both', right=True,top=True)
+        plt.rcParams.update({'font.size': axis_fontsize})
         chi2 = np.squeeze(chi2_i)
         prior = np.exp(log_prior_i)
         #pz = np.exp(-(chi2-chi2.min())/2.)*prior
@@ -3003,8 +3008,11 @@ class PhotoZ(object):
                 ax.set_xlim(zr)
                 
             ax.set_xlabel('z'); ax.set_ylabel('p(z)')
-            ax.grid()
+            if add_grid:
+                ax.grid()
             ax.set_yticklabels([])
+
+        
             
             fig_axes.tight_layout(fig, pad=0.5)
             
