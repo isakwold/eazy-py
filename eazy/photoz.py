@@ -2434,7 +2434,7 @@ class PhotoZ(object):
         fp.close()
     
     
-    def show_fit(self, id, id_is_idx=False, zshow=None, show_fnu=0, get_spec=False, xlim=[0.3, 9], show_components=False, show_redshift_draws=False, draws_cmap=None, ds9=None, ds9_sky=True, add_label=True, showpz=0.6, logpz=False, zr=None, axes=None, template_color='#1f77b4', figsize=[8,4], ndraws=100, fitter='nnls', show_missing=True, maglim=None, show_prior=False, show_stars=False, delta_chi2_stars=-20, max_stars=3, show_upperlimits=True, snr_thresh=2., with_tef=True, **kwargs):
+    def show_fit(self, id, id_is_idx=False, zshow=None, show_fnu=0, get_spec=False, xlim=[0.3, 9], show_components=False, show_redshift_draws=False, draws_cmap=None, ds9=None, ds9_sky=True, add_grid=False, axis_fontsize=14, legend_fontsize=12, add_label=True, showpz=0.6, logpz=False, zr=None, axes=None, template_color='#1f77b4', figsize=[8,4], ndraws=100, fitter='nnls', show_missing=True, maglim=None, show_prior=False, show_stars=False, delta_chi2_stars=-20, max_stars=3, show_upperlimits=True, snr_thresh=2., with_tef=True, **kwargs):
         """
         Make plot of SED and p(z) of a single object
         
@@ -2733,7 +2733,10 @@ class PhotoZ(object):
             return data
         
         ###### Make the plot
-        
+        plt.minorticks_on()
+        plt.tick_params(axis='both', direction='in', which='both', right=True,top=True)
+        plt.rcParams.update({'font.size': axis_fontsize})
+
         if axes is None:
             fig = plt.figure(figsize=figsize)
             if showpz:
@@ -2913,7 +2916,8 @@ class PhotoZ(object):
                 ax.set_xticklabels(xt/1.e4)
 
             ax.set_xlabel(r'$\lambda_\mathrm{obs}$')
-            ax.grid()
+            if add_grid:
+                ax.grid()
             
             if add_label:
                 txt = '{0}\nID={1}'
@@ -2924,7 +2928,7 @@ class PhotoZ(object):
                 #        transform=ax.transAxes, does this get updated?
                 #        bbox=dict(facecolor='w', alpha=0.5), zorder=10)
                 
-                ax.legend(fontsize=7, loc='upper left')
+                ax.legend(fontsize=legend_fontsize, loc='upper left')
         
         # Optional mag scaling if show_fnu = 1 for uJy
         if (maglim is not None) & (show_fnu == 1):
@@ -3005,7 +3009,7 @@ class PhotoZ(object):
             fig_axes.tight_layout(fig, pad=0.5)
             
             if add_label & (zspec_i > 0):
-                ax.legend(fontsize=7, loc='upper left')
+                ax.legend(fontsize=legend_fontsize, loc='upper left')
                 
             return fig, data
         else:
