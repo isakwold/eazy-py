@@ -2894,7 +2894,9 @@ class PhotoZ(object):
             ax.set_ylabel(ylabel)
             
             if sn2_detection.sum() > 0:
-                ymax = (fmodel*fnu_factor*flam_sed)[sn2_detection].max()
+                ymax1 = (fmodel*fnu_factor*flam_sed)[sn2_detection].max()
+                ymax2 = (fnu_i*fnu_factor*flam_sed)[sn2_detection].max()
+                ymax = np.max([ymax1,ymax2])
             else:
                 ymax = (fmodel*fnu_factor*flam_sed).max()
                         
