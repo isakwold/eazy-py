@@ -2700,8 +2700,8 @@ class PhotoZ(object):
             templz_power = -2
             flam_spec = utils.CLIGHT*1.e10/templz**2/1.e-19
             flam_sed = utils.CLIGHT*1.e10/self.pivot**2/self.ext_corr/1.e-19
-            ylabel = (r'$f_\lambda [10^{-19}$ erg/s/cm$^2$]')
-            
+            #ylabel = (r'$f_\lambda [10^{-19}$ erg/s/cm$^2$]')
+            ylabel = (r'$f_\lambda [10^{-19}$ erg s$^{-1}cm$^{-2}$\AA$^{-1}$]')
             flux_unit = 1.e-19*u.erg/u.s/u.cm**2/u.AA
                         
         try:
