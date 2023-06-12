@@ -2720,7 +2720,7 @@ class PhotoZ(object):
                            tef=tef_i,
                            templz=templz,
                            templf=templf*fnu_factor*flam_spec,
-                           itemplf=coeffs_i[:,np.newaxis]*tempflux*igmz*fnu_factor*flam_spec
+                           itemplf=coeffs_i[:,np.newaxis]*tempflux*igmz*fnu_factor*flam_spec,
                            show_fnu=show_fnu*1,
                            flux_unit=flux_unit,
                            wave_unit=u.AA, 
