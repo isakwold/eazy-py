@@ -2720,6 +2720,7 @@ class PhotoZ(object):
                            tef=tef_i,
                            templz=templz,
                            templf=templf*fnu_factor*flam_spec,
+                           itemplf=coeffs_i[:,np.newaxis]*tempflux*igmz*fnu_factor*flam_spec
                            show_fnu=show_fnu*1,
                            flux_unit=flux_unit,
                            wave_unit=u.AA, 
@@ -4723,7 +4724,7 @@ class PhotoZ(object):
         tab['z500'] = zlimits[:,2]
         tab['z840'] = zlimits[:,3]
         tab['z975'] = zlimits[:,4]
-        
+    
         for col in tab.colnames[-6:]:
             tab[col].format='8.4f'
             
